@@ -32,7 +32,7 @@ def decode_state(b, var):
 	L = decode_label(b-2)
 	return f'IF {var} != 0 Goto {L}'
 
-def decode_instruction(I):
+def decode_instruction(z):
 	a, x = decode_pair(z)
 	b, c = decode_pair(x)
 	# print(f'<{a},{x}>, x=<{b},{c}>')
@@ -44,6 +44,6 @@ def decode_instruction(I):
 	return state
 
 if __name__=='__main__':
-	while(True):
-		z = int(input())
-		print(decode_instruction(z))
+	I = input().split(' ')
+	for z in I:
+		print(decode_instruction(int(z)))
