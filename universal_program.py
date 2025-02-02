@@ -3,7 +3,7 @@ MAXN = 5
 X = [0]*MAXN
 Z = [0]*MAXN
 Y = [0]
-last_occ = dict({'E':MAXN})
+last_occ = dict({'Exit' :MAXN})
 
 def decode_pair(z):
 	x, y = 0, 0
@@ -15,7 +15,7 @@ def decode_pair(z):
 
 def decode_label(a):
 	if(a==0):
-		return 'E'
+		return 'Exit'
 	L = ['A', 'B', 'C', 'D', 'E']
 	c = L[a%len(L)-1]
 	n = a//len(L) + 1	
@@ -42,7 +42,7 @@ def if_instruction(var_name, var_index, label):
 		if(label in last_occ.keys()):
 			return last_occ[label]
 		else:
-			return None
+			return last_occ['Exit']
 	return None
 
 def instruct(var_name, var_index = 0, v = 0):
@@ -72,7 +72,8 @@ def apply_instruction(z, line):
 	b, c = decode_pair(x)
 	
 	L = decode_label(a)
-	last_occ[L] = line
+	if(L!='Exit'):
+		last_occ[L] = line
 
 	var_name, var_index = decode_var(c)
 	go_to_state = instruction(b, var_name, var_index)
@@ -95,7 +96,8 @@ def initialize(z, line, MAX_X, MAX_Z):
 	b, c = decode_pair(x)
 
 	L = decode_label(a)
-	last_occ[L] = line
+	if(L!='Exit'):
+		last_occ[L] = line
 
 	var_name, var_index = decode_var(c)
 	if(var_name=='X'):
