@@ -30,7 +30,7 @@ def decode_state(b, var):
 	if(b == 2):
 		return f'{var} <- {var} - 1'
 	L = decode_label(b-2)
-	return f'IF {var} != 0 Goto {L}'
+	return f'IF {var} != 0 GOTO {L}'
 
 def decode_instruction(z):
 	a, x = decode_pair(z)
