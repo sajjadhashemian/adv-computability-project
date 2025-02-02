@@ -11,7 +11,7 @@ def decode_label(a):
 		return ''
 	L = ['A', 'B', 'C', 'D', 'E']
 	c = L[a%len(L)-1]
-	n = a//len(L) + 1	
+	n = int(a/len(L)) + (0 if(a%len(L)==0) else 1)
 	return f'{c}{n}'
 
 def decode_var(c):
@@ -46,4 +46,5 @@ def decode_instruction(z):
 if __name__=='__main__':
 	I = input().split(' ')
 	for z in I:
-		print(decode_instruction(int(z)))
+		# print(decode_instruction(int(z)))
+		print(decode_label(int(z)))

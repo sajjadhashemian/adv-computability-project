@@ -18,7 +18,7 @@ def decode_label(a):
 		return 'Exit'
 	L = ['A', 'B', 'C', 'D', 'E']
 	c = L[a%len(L)-1]
-	n = a//len(L) + 1	
+	n = int(a/len(L)) + (0 if(a%len(L)==0) else 1)
 	return f'{c}{n}'
 
 def decode_var(c):
