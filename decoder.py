@@ -46,5 +46,5 @@ def decode_instruction(z):
 if __name__=='__main__':
 	I = input().split(' ')
 	for z in I:
-		# print(decode_instruction(int(z)))
-		print(decode_label(int(z)))
+		print(decode_instruction(int(z)))
+		# print(decode_var(int(z)))
